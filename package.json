@@ -1,0 +1,27 @@
+{ 
+    "name": "Instagram_API", 
+    "description": "Used to make requests to the Instagram API", 
+    "version": "0.0.0", 
+    "author": "Tim Marshall <timothyjmarhall@gmail.com>",
+    "repository": {
+        "type": "git",
+        "url": "git://github.com/tmarshall/Instagram-API.git"
+    },
+    "bugs": {  }, 
+    "os": [ "osx", "linux" ], 
+    "directories": {  }, 
+    "main": "main", 
+    "dependencies" : { 
+        "request": "*"
+    },
+    "engines": { 
+        "node" : ">=0.4.8" 
+    },
+    "bugs": { 
+        "url" : "http://github.com/tmarshall/Instagram-API/issues" 
+    },
+    "licenses": [{
+        "type": "MIT",
+        "url": "http://github.com/tmarshall/Instagram-API/raw/master/LICENSE"
+    }]
+}
