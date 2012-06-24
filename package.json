@@ -1,7 +1,7 @@
 { 
     "name": "Instagram_API", 
     "description": "Used to make requests to the Instagram API", 
-    "version": "0.0.0", 
+    "version": "0.0.0001", 
     "author": "Tim Marshall <timothyjmarhall@gmail.com>",
     "repository": {
         "type": "git",
