@@ -5,6 +5,8 @@ var
 	// types of requests which shouldn't use 'id' as keys, in the user data object
 	nonIdBasedConnection = [ 'permissions', 'picture', 'user' ],
 	connections,
+	underscoreUrl = /_url$/,
+	preQueryString = /.*\?/,
 	toString = Object.prototype.toString,
 	arraySlice = Array.prototype.slice,
 	key
@@ -63,16 +65,16 @@ function connection(kind, path, universal) {
 				else if (Array.isArray(body.data)) for (i = 0, l = body.data.length; i < l; i++) lex.data[kind][body.data[i].id] = body.data[i]
 			}
 
-			// facebook may have given us 'next' and 'previous' paging paths
+			// instagram may have given us 'next' and 'previous' paging paths
 			if (body.paging) {
 				pagingFunc = function(callback) {
-					var pagingOptions = querystring.parse(body.paging[this].replace(preQueryString, ''))
+					var pagingOptions = querystring.parse(body.pagination[this].replace(preQueryString, ''))
 					// they gave us the access token, which we have in the User instance
 					delete pagingOptions.access_token
 					connfunc.apply(lex, (isUser ? [ ] : [ id, accessToken ]).concat([ pagingOptions, callback ]))
 				}
 
-				for (key in body.paging) paging[key] = pagingFunc.bind(key)
+				for (key in body.pagination) paging[key.replace(underscoreUrl, '')] = pagingFunc.bind(key)
 			}
 
 			callback(err, res, body, paging)
